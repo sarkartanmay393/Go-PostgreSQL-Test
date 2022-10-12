@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"math/rand"
 
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
@@ -26,6 +25,7 @@ func main() {
 	log.Println("Pinged Database!")
 
 	// View Rows
+	fmt.Printf("Initialising with these two entries.\n")
 	err = viewRows(conn)
 	if err != nil {
 		log.Println("Unable to view database: ", err)
@@ -36,7 +36,7 @@ func main() {
 	if 1 == 0 {
 		fmt.Print(query)
 	}
-	_, err = conn.Exec(query, rand.Int(), "Amit", "Nandi", "amit@ac.org")
+	_, err = conn.Exec(query, 3, "Amit", "Nandi", "amit@ac.org")
 	if err != nil {
 		log.Println("Unable to insert into database: ", err)
 	}
